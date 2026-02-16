@@ -2,1139 +2,240 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denny's Service Center | Auto Repair St. Paul, MN</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    a { color: inherit; text-decoration: none; }
 
 ```
 :root {
-  --steel:    #0D0F12;
-  --steel-2:  #141720;
-  --steel-3:  #1C2030;
-  --steel-4:  #252A3A;
-  --orange:   #E8620A;
-  --orange-lt:#FF7A20;
-  --orange-dk:#C04E05;
-  --white:    #F0F2F5;
-  --gray:     #8A9BB0;
-  --gray-lt:  #B8C5D6;
-  --line:     #252A3A;
-  --ase:      #003087;
+  --steel:   #0D0F12;
+  --steel2:  #141720;
+  --steel3:  #1C2030;
+  --steel4:  #252A3A;
+  --orange:  #E8620A;
+  --orng-lt: #FF7A20;
+  --orng-dk: #C04E05;
+  --white:   #F0F2F5;
+  --gray:    #8A9BB0;
+  --gray-lt: #B8C5D6;
+  --line:    #252A3A;
+  --fd: Impact, 'Arial Narrow', 'Franklin Gothic Medium', 'Arial Black', sans-serif;
+  --fb: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --fm: 'Menlo', 'Consolas', 'Courier New', monospace;
 }
 
-html { scroll-behavior: smooth; }
+body { font-family: var(--fb); background-color: var(--steel); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-body {
-  font-family: 'Barlow', sans-serif;
-  background: var(--steel);
-  color: var(--white);
-  overflow-x: hidden;
-}
+/* TICKER */
+.ticker { background-color: var(--orange); overflow: hidden; white-space: nowrap; height: 32px; display: flex; align-items: center; }
+.ticker-track { display: inline-block; animation: tick 32s linear infinite; font-family: var(--fm); font-size: 11px; letter-spacing: 0.18em; color: #fff; text-transform: uppercase; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ts { margin: 0 28px; opacity: 0.5; }
 
-/* ── TICKER ───────────────────────────────────────────── */
-.ticker {
-  background: var(--orange);
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 0.45rem 0;
-}
-.ticker-inner {
-  display: inline-block;
-  animation: ticker 28s linear infinite;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  color: #fff;
-  text-transform: uppercase;
-}
-.ticker-inner span { margin: 0 2.5rem; opacity: 0.7; }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ── NAV ─────────────────────────────────────────────── */
-nav {
-  background: var(--steel);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.5rem;
-  height: 70px;
-  position: sticky;
-  top: 0;
-  z-index: 200;
-}
-
-.nav-logo {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  line-height: 1.1;
-}
-.nav-logo-top {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--white);
-}
-.nav-logo-top em {
-  font-style: normal;
-  color: var(--orange);
-}
-.nav-logo-sub {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-}
-.nav-links a {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+/* NAV */
+nav { background-color: var(--steel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 68px; }
+.nav-logo { display: flex; flex-direction: column; gap: 2px; }
+.nav-logo-name { font-family: var(--fd); font-size: 20px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; color: var(--white); line-height: 1; }
+.nav-logo-name span { color: var(--orange); }
+.nav-logo-sub { font-family: var(--fm); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-family: var(--fd); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); transition: color 0.2s; }
 .nav-links a:hover { color: var(--white); }
+.nav-phone { font-family: var(--fd); font-size: 18px; font-weight: 900; color: var(--white); letter-spacing: 0.04em; }
+.btn-call { display: inline-block; background-color: var(--orange); color: #fff; padding: 8px 20px; font-family: var(--fd); font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%); transition: background-color 0.2s; }
+.btn-call:hover { background-color: var(--orng-lt); }
 
-.nav-phone {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-.phone-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.06em;
-  color: var(--white);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.phone-num:hover { color: var(--orange); }
-
-.btn-nav {
-  background: var(--orange);
-  color: #fff;
-  padding: 0.55rem 1.4rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  display: inline-block;
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
-}
-.btn-nav:hover { background: var(--orange-lt); transform: translateY(-1px); }
-
-/* ── HERO ─────────────────────────────────────────────── */
-.hero {
-  min-height: 88vh;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-}
-
-/* Diagonal split */
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 120px;
-  background: var(--steel);
-  transform: translateX(-50%) skewX(-4deg);
-  z-index: 2;
-}
-
-.hero-left {
-  background: var(--steel-2);
-  background-image:
-    radial-gradient(ellipse 70% 80% at 30% 50%, #1a2035 0%, transparent 70%),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 40px,
-      rgba(255,255,255,0.012) 40px,
-      rgba(255,255,255,0.012) 41px
-    );
-  padding: 5rem 4rem 5rem 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  animation: slideLeft 0.8s ease both;
-}
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-.hero-tag {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.hero-tag::before {
-  content: '';
-  width: 28px; height: 2px;
-  background: var(--orange);
-  display: inline-block;
-}
-
-.hero h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: clamp(3.2rem, 6.5vw, 6rem);
-  line-height: 0.92;
-  text-transform: uppercase;
-  color: var(--white);
-  letter-spacing: -0.01em;
-  margin-bottom: 1.5rem;
-}
-.hero h1 .outline {
-  -webkit-text-stroke: 1.5px var(--gray);
-  color: transparent;
-}
+/* HERO */
+.hero { background-color: var(--steel2); background-image: radial-gradient(ellipse 60% 70% at 30% 50%, #1a2035 0%, transparent 70%); min-height: 88vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 48px; }
+.hero-tag { display: flex; align-items: center; gap: 10px; font-family: var(--fm); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 28px; }
+.hero-tag::before { content: ''; display: inline-block; width: 28px; height: 2px; background-color: var(--orange); flex-shrink: 0; }
+.hero h1 { font-family: var(--fd); font-size: clamp(52px, 10vw, 96px); font-weight: 900; line-height: 0.92; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 28px; }
+.hero h1 .outline { -webkit-text-stroke: 2px var(--gray); color: transparent; }
 .hero h1 .accent { color: var(--orange); }
-
-.hero-sub {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--gray-lt);
-  max-width: 400px;
-  margin-bottom: 2.5rem;
-}
-
-.hero-btns {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-
-.btn-primary {
-  background: var(--orange);
-  color: #fff;
-  padding: 0.9rem 2.2rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
-  transition: background 0.2s, transform 0.15s;
-  display: inline-block;
-}
-.btn-primary:hover { background: var(--orange-lt); transform: translateY(-2px); }
-
-.btn-ghost {
-  background: transparent;
-  color: var(--gray-lt);
-  padding: 0.9rem 2.2rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 1px solid var(--steel-4);
-  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%);
-  transition: border-color 0.2s, color 0.2s;
-  display: inline-block;
-}
+.hero-sub { font-size: 17px; line-height: 1.75; color: var(--gray-lt); max-width: 460px; margin-bottom: 40px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary { display: inline-block; background-color: var(--orange); color: #fff; padding: 14px 32px; font-family: var(--fd); font-size: 15px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%); transition: background-color 0.2s, transform 0.15s; }
+.btn-primary:hover { background-color: var(--orng-lt); transform: translateY(-2px); }
+.btn-ghost { display: inline-block; background: transparent; color: var(--gray-lt); padding: 14px 32px; font-family: var(--fd); font-size: 15px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--steel4); clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%); transition: border-color 0.2s, color 0.2s; }
 .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+.hero-badges { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.badge-ase { background-color: #003087; color: #fff; font-family: var(--fd); font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; }
+.badge-item { display: flex; flex-direction: column; }
+.badge-strong { font-family: var(--fd); font-size: 14px; font-weight: 900; color: var(--white); text-transform: uppercase; letter-spacing: 0.05em; }
+.badge-weak { font-family: var(--fm); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
 
-.hero-badges {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.badge-ase {
-  background: var(--ase);
-  color: #fff;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  padding: 0.4rem 0.9rem;
-  text-transform: uppercase;
-}
-.badge-gen {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: var(--gray);
-  text-transform: uppercase;
-  line-height: 1.6;
-}
-.badge-gen strong { color: var(--white); display: block; font-size: 0.9rem; }
+/* STATS */
+.stats-strip { background-color: var(--steel3); border-top: 1px solid var(--line); border-bottom: 3px solid var(--orange); display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-cell { padding: 28px 20px; border-right: 1px solid var(--line); text-align: center; }
+.stat-cell:last-child { border-right: none; }
+.stat-num { font-family: var(--fd); font-size: 48px; font-weight: 900; color: var(--white); line-height: 1; }
+.stat-num em { font-style: normal; color: var(--orange); font-size: 32px; }
+.stat-lbl { font-family: var(--fm); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
 
-/* Hero right — stat panel */
-.hero-right {
-  background: var(--steel-3);
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 39px,
-    var(--line) 39px,
-    var(--line) 40px
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5rem 5rem 5rem 7rem;
-  position: relative;
-  z-index: 1;
-  gap: 0;
-  animation: slideRight 0.8s ease both;
-}
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(30px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
+/* CERT */
+.cert-strip { background-color: var(--steel2); border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; }
+.cert-cell { flex: 1; min-width: 160px; display: flex; align-items: center; gap: 10px; padding: 16px 24px; border-right: 1px solid var(--line); }
+.cert-cell:last-child { border-right: none; }
+.cert-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--orange); flex-shrink: 0; }
+.cert-text strong { display: block; font-family: var(--fd); font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); }
+.cert-text span { font-family: var(--fm); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
 
-.stat-block {
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-}
-.stat-block:last-child { border-bottom: none; }
-.stat-block::before {
-  content: '';
-  position: absolute;
-  left: -2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  background: var(--orange);
-  transition: height 0.4s ease;
-}
-.stat-block.visible::before { height: 60%; }
+/* COMMONS */
+.section-tag { font-family: var(--fm); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.section-title { font-family: var(--fd); font-size: clamp(36px, 5vw, 56px); font-weight: 900; text-transform: uppercase; line-height: 0.95; color: var(--white); }
+.section-desc { font-size: 15px; line-height: 1.75; color: var(--gray); max-width: 480px; margin-top: 14px; }
+.inner { max-width: 1180px; margin: 0 auto; }
 
-.stat-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 3.8rem;
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.02em;
-}
-.stat-num .unit { color: var(--orange); font-size: 2.5rem; }
-.stat-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-top: 0.3rem;
-}
+/* SERVICES */
+#services { background-color: var(--steel); padding: 80px 24px; }
+.services-hdr { margin-bottom: 48px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background-color: var(--line); border: 1px solid var(--line); }
+.svc { background-color: var(--steel2); padding: 32px; position: relative; transition: background-color 0.25s; }
+.svc::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background-color: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.svc:hover { background-color: var(--steel3); }
+.svc:hover::after { transform: scaleX(1); }
+.svc-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+.svc-name { font-family: var(--fd); font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: var(--white); margin-bottom: 10px; }
+.svc-desc { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 20px; }
+.svc-arr { font-family: var(--fm); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); }
 
-/* ── CERTIFICATIONS STRIP ─────────────────────────────── */
-.cert-strip {
-  background: var(--steel-2);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  overflow: hidden;
-}
-.cert-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.1rem 3rem;
-  border-right: 1px solid var(--line);
-  flex: 1;
-  justify-content: center;
-}
-.cert-item:last-child { border-right: none; }
-.cert-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--orange);
-  flex-shrink: 0;
-}
-.cert-text {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray-lt);
-  line-height: 1.5;
-}
-.cert-text strong { color: var(--white); display: block; }
-
-/* ── SERVICES ─────────────────────────────────────────── */
-#services {
-  padding: 7rem 2rem;
-  background: var(--steel);
-}
-.services-inner { max-width: 1200px; margin: 0 auto; }
-
-.section-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 3rem;
-  align-items: end;
-  margin-bottom: 4rem;
-}
-.section-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 6rem;
-  line-height: 1;
-  color: var(--line);
-  letter-spacing: -0.03em;
-  user-select: none;
-}
-.section-meta {}
-.section-tag {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 0.6rem;
-}
-.section-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.01em;
-}
-.section-desc {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--gray);
-  max-width: 480px;
-  margin-top: 1rem;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.service-card {
-  background: var(--steel-2);
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  cursor: default;
-  transition: background 0.25s;
-}
-.service-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--orange);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.service-card:hover { background: var(--steel-3); }
-.service-card:hover::after { transform: scaleX(1); }
-
-.service-icon {
-  font-size: 2rem;
-  margin-bottom: 1.2rem;
-  display: block;
-}
-.service-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  margin-bottom: 0.75rem;
-}
-.service-desc {
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: var(--gray);
-}
-.service-arrow {
-  display: inline-block;
-  margin-top: 1.5rem;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--orange);
-}
-
-/* ── WHY US ───────────────────────────────────────────── */
-#about {
-  background: var(--steel-2);
-  padding: 7rem 2rem;
-  border-top: 1px solid var(--line);
-}
-.about-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-}
-
-.about-left .section-title { margin-bottom: 1.5rem; }
-.about-left p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--gray-lt);
-  margin-bottom: 1.1rem;
-}
+/* ABOUT */
+#about { background-color: var(--steel2); padding: 80px 24px; border-top: 1px solid var(--line); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.about-left p { font-size: 15px; line-height: 1.8; color: var(--gray-lt); margin-top: 14px; }
 .about-left p strong { color: var(--white); }
-
-.pillars {
-  margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--line);
-}
-.pillar {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  border-bottom: 1px solid var(--line);
-  transition: background 0.2s;
-}
+.pillars { margin-top: 32px; border: 1px solid var(--line); }
+.pillar { display: flex; align-items: flex-start; gap: 20px; padding: 20px; border-bottom: 1px solid var(--line); transition: background-color 0.2s; }
 .pillar:last-child { border-bottom: none; }
-.pillar:hover { background: var(--steel-3); }
-.pillar-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 2rem;
-  color: var(--orange);
-  line-height: 1;
-  flex-shrink: 0;
-  width: 2rem;
-}
-.pillar-body {}
-.pillar-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--white);
-  margin-bottom: 0.3rem;
-}
-.pillar-text {
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: var(--gray);
-}
-
-/* Big visual panel */
-.about-right {
-  position: relative;
-}
-.about-panel {
-  background: var(--steel-3);
-  background-image:
-    repeating-linear-gradient(
-      -60deg,
-      transparent 0px,
-      transparent 30px,
-      rgba(255,255,255,0.012) 30px,
-      rgba(255,255,255,0.012) 31px
-    );
-  border: 1px solid var(--line);
-  padding: 3rem;
-  position: relative;
-}
-.about-panel::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px; height: 100%;
-  background: var(--orange);
-}
-
-.gen-badge {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 8rem;
-  line-height: 0.85;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--steel-4);
-  letter-spacing: -0.04em;
-  user-select: none;
-  margin-bottom: 1rem;
-}
-.gen-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
+.pillar:hover { background-color: var(--steel3); }
+.pillar-num { font-family: var(--fd); font-size: 28px; font-weight: 900; color: var(--orange); line-height: 1; flex-shrink: 0; width: 28px; }
+.pillar-title { font-family: var(--fd); font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px; }
+.pillar-text { font-size: 13px; line-height: 1.65; color: var(--gray); }
+.about-panel { background-color: var(--steel3); border: 1px solid var(--line); padding: 40px; position: relative; }
+.about-panel::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background-color: var(--orange); }
+.gen-big { font-family: var(--fd); font-size: 120px; font-weight: 900; line-height: 0.85; color: transparent; -webkit-text-stroke: 1px var(--steel4); user-select: none; margin-bottom: 16px; }
+.gen-label { font-family: var(--fd); font-size: 28px; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1.1; margin-bottom: 12px; }
 .gen-label span { color: var(--orange); }
-.gen-sub {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gray);
-  line-height: 1.8;
-}
+.gen-sub { font-family: var(--fm); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); line-height: 1.9; }
+.rev-pull { margin-top: 24px; padding: 20px; background-color: var(--steel); border-left: 3px solid var(--orange); }
+.rev-pull-text { font-size: 14px; line-height: 1.7; color: var(--gray-lt); font-style: italic; margin-bottom: 10px; }
+.rev-pull-attr { font-family: var(--fm); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
 
-.review-pullout {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: var(--steel);
-  border-left: 3px solid var(--orange);
-}
-.review-pullout-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--gray-lt);
-  font-style: italic;
-  margin-bottom: 0.75rem;
-}
-.review-pullout-author {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--orange);
-}
+/* FAQ */
+#faq { background-color: var(--steel); padding: 80px 24px; border-top: 1px solid var(--line); }
+.faq-layout { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 20px 0; gap: 16px; text-align: left; }
+.faq-qt { font-family: var(--fd); font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; color: var(--white); transition: color 0.2s; }
+.faq-q:hover .faq-qt { color: var(--orange); }
+.faq-plus { font-family: var(--fd); font-size: 24px; color: var(--orange); transition: transform 0.3s; flex-shrink: 0; line-height: 1; font-style: normal; }
+.faq-item.open .faq-plus { transform: rotate(45deg); }
+.faq-a { font-size: 14px; line-height: 1.75; color: var(--gray); max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding-bottom 0.3s; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
 
-/* ── FAQ ─────────────────────────────────────────────── */
-#faq {
-  background: var(--steel);
-  padding: 7rem 2rem;
-  border-top: 1px solid var(--line);
-}
-.faq-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 6rem;
-  align-items: start;
-}
-.faq-list { display: flex; flex-direction: column; gap: 0; }
-.faq-item {
-  border-bottom: 1px solid var(--line);
-  overflow: hidden;
-}
-.faq-q {
-  width: 100%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.4rem 0;
-  text-align: left;
-  gap: 1rem;
-  transition: color 0.2s;
-}
-.faq-q-text {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--white);
-}
-.faq-q:hover .faq-q-text { color: var(--orange); }
-.faq-chevron {
-  font-size: 1.2rem;
-  color: var(--orange);
-  transition: transform 0.3s;
-  flex-shrink: 0;
-  font-style: normal;
-}
-.faq-item.open .faq-chevron { transform: rotate(45deg); }
-.faq-a {
-  font-size: 0.92rem;
-  line-height: 1.75;
-  color: var(--gray);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.3s;
-}
-.faq-item.open .faq-a {
-  max-height: 200px;
-  padding-bottom: 1.3rem;
-}
+/* LOCATION */
+#location { background-color: var(--steel2); padding: 80px 24px; border-top: 1px solid var(--line); }
+.loc-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.hours-tbl { width: 100%; border-collapse: collapse; margin-top: 28px; border: 1px solid var(--line); }
+.hours-tbl tr { border-bottom: 1px solid var(--line); }
+.hours-tbl tr:last-child { border-bottom: none; }
+.hours-tbl td { padding: 12px 16px; font-size: 14px; color: var(--gray-lt); }
+.hours-tbl td:first-child { font-family: var(--fm); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); background-color: var(--steel3); width: 130px; border-right: 1px solid var(--line); }
+.h-closed { color: var(--steel4) !important; font-style: italic; }
+.h-today td { color: var(--orange) !important; }
+.h-today td:first-child { background-color: rgba(232,98,10,0.15) !important; color: var(--orange) !important; }
+.loc-rows { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.loc-row { display: flex; align-items: flex-start; gap: 14px; padding: 16px; background-color: var(--steel3); border: 1px solid var(--line); }
+.loc-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.loc-lbl { font-family: var(--fm); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 3px; }
+.loc-val { font-size: 14px; line-height: 1.6; color: var(--gray-lt); }
+.loc-val a { color: var(--orange); }
+.map-box { border: 1px solid var(--line); border-top: 3px solid var(--orange); background-color: var(--steel3); aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.map-icon { font-size: 48px; opacity: 0.2; }
+.map-addr { font-family: var(--fm); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); text-align: center; line-height: 1.9; }
+.map-link { display: inline-block; background-color: var(--orange); color: #fff; padding: 10px 22px; font-family: var(--fd); font-size: 13px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%); transition: background-color 0.2s; }
+.map-link:hover { background-color: var(--orng-lt); }
 
-/* ── HOURS & MAP ──────────────────────────────────────── */
-#location {
-  background: var(--steel-2);
-  padding: 7rem 2rem;
-  border-top: 1px solid var(--line);
-}
-.location-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
+/* REVIEWS */
+#reviews { background-color: var(--steel); padding: 80px 24px; border-top: 1px solid var(--line); }
+.reviews-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 24px; }
+.rating-block { display: flex; align-items: baseline; gap: 14px; }
+.rating-num { font-family: var(--fd); font-size: 72px; font-weight: 900; color: var(--white); line-height: 1; }
+.rating-stars { color: var(--orange); font-size: 18px; }
+.rating-count { font-family: var(--fm); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px; background-color: var(--line); border: 1px solid var(--line); }
+.rev-card { background-color: var(--steel2); padding: 28px; transition: background-color 0.25s; }
+.rev-card:hover { background-color: var(--steel3); }
+.rev-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.rev-stars { color: var(--orange); font-size: 14px; }
+.rev-badge { font-family: var(--fm); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); background-color: var(--steel4); padding: 3px 8px; }
+.rev-text { font-size: 14px; line-height: 1.7; color: var(--gray-lt); font-style: italic; margin-bottom: 16px; }
+.rev-author { font-family: var(--fm); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
+.reviews-more { text-align: center; margin-top: 36px; }
 
-.hours-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  margin-top: 2rem;
-  border: 1px solid var(--line);
-}
-.hours-row {
-  display: contents;
-}
-.hours-day, .hours-time {
-  padding: 0.85rem 1.2rem;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.9rem;
-}
-.hours-day {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  border-right: 1px solid var(--line);
-  background: var(--steel-3);
-}
-.hours-time { color: var(--gray-lt); background: var(--steel-2); }
-.hours-closed { color: var(--steel-4) !important; font-style: italic; }
-.hours-today .hours-day,
-.hours-today .hours-time { color: var(--orange) !important; background: rgba(232,98,10,0.08) !important; }
+/* CTA */
+#cta { background-color: var(--orange); padding: 72px 24px; position: relative; overflow: hidden; }
+#cta::before { content: "DENNY'S"; position: absolute; right: -20px; top: 50%; transform: translateY(-50%); font-family: var(--fd); font-size: 180px; font-weight: 900; color: rgba(0,0,0,0.1); letter-spacing: -0.04em; line-height: 1; pointer-events: none; user-select: none; white-space: nowrap; }
+.cta-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; position: relative; z-index: 1; }
+.cta-tag { font-family: var(--fm); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.cta-headline { font-family: var(--fd); font-size: clamp(36px, 5vw, 56px); font-weight: 900; text-transform: uppercase; color: #fff; line-height: 1; }
+.cta-tel { display: block; font-family: var(--fd); font-size: 26px; font-weight: 900; color: rgba(255,255,255,0.85); margin-top: 8px; }
+.cta-btns { display: flex; flex-direction: column; gap: 12px; }
+.btn-wht { display: inline-block; background-color: #fff; color: var(--orng-dk); padding: 14px 36px; font-family: var(--fd); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%); transition: background-color 0.2s, transform 0.15s; }
+.btn-wht:hover { background-color: #f0f2f5; transform: translateY(-2px); }
+.btn-wht-ghost { display: inline-block; background: transparent; color: #fff; padding: 14px 36px; font-family: var(--fd); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; border: 2px solid rgba(255,255,255,0.5); transition: border-color 0.2s; }
+.btn-wht-ghost:hover { border-color: #fff; }
 
-.location-details {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.loc-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.2rem;
-  background: var(--steel-3);
-  border: 1px solid var(--line);
-}
-.loc-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-.loc-text { font-size: 0.9rem; line-height: 1.6; color: var(--gray-lt); }
-.loc-text a { color: var(--orange); text-decoration: none; }
-.loc-text a:hover { text-decoration: underline; }
-.loc-label {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gray);
-  display: block;
-  margin-bottom: 0.2rem;
-}
+/* FOOTER */
+footer { background-color: var(--steel2); border-top: 1px solid var(--line); padding: 48px 24px 28px; }
+.footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+.f-brand-name { font-family: var(--fd); font-size: 22px; font-weight: 900; text-transform: uppercase; color: var(--white); letter-spacing: 0.04em; margin-bottom: 4px; }
+.f-brand-name span { color: var(--orange); }
+.f-brand-sub { font-family: var(--fm); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
+.f-bio { font-size: 13px; line-height: 1.75; color: var(--gray); }
+.f-heading { font-family: var(--fm); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+.f-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.f-links a { font-size: 13px; color: var(--gray); transition: color 0.2s; }
+.f-links a:hover { color: var(--white); }
+.footer-bottom { max-width: 1180px; margin: 20px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.f-copy { font-family: var(--fm); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+.pay-icons { display: flex; gap: 6px; }
+.pay-icon { background-color: var(--steel3); border: 1px solid var(--line); padding: 4px 8px; font-family: var(--fm); font-size: 9px; letter-spacing: 0.06em; color: var(--gray); text-transform: uppercase; }
 
-.map-frame {
-  background: var(--steel-3);
-  border: 1px solid var(--line);
-  aspect-ratio: 4/3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  position: relative;
-  overflow: hidden;
-}
-.map-frame::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--orange);
-}
-.map-placeholder-txt {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray);
-  text-align: center;
-  line-height: 1.8;
-}
-.map-frame-icon { font-size: 3rem; opacity: 0.25; }
-.map-directions {
-  display: inline-block;
-  background: var(--orange);
-  color: #fff;
-  padding: 0.65rem 1.5rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
-  transition: background 0.2s;
-}
-.map-directions:hover { background: var(--orange-lt); }
+/* REVEAL */
+.rev { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.rev.in { opacity: 1; transform: none; }
 
-/* ── REVIEWS ──────────────────────────────────────────── */
-#reviews {
-  background: var(--steel);
-  padding: 7rem 2rem;
-  border-top: 1px solid var(--line);
-}
-.reviews-inner { max-width: 1200px; margin: 0 auto; }
-
-.reviews-top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-.reviews-rating {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-.rating-big {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 5rem;
-  line-height: 1;
-  color: var(--white);
-}
-.rating-detail { display: flex; flex-direction: column; gap: 0.3rem; }
-.rating-stars { color: var(--orange); font-size: 1.1rem; letter-spacing: 0.1em; }
-.rating-count {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.review-card {
-  background: var(--steel-2);
-  padding: 2rem;
-  transition: background 0.25s;
-}
-.review-card:hover { background: var(--steel-3); }
-.review-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-.review-stars { color: var(--orange); font-size: 0.85rem; }
-.review-badge {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  background: var(--steel-4);
-  padding: 0.2rem 0.5rem;
-}
-.review-text {
-  font-size: 0.92rem;
-  line-height: 1.7;
-  color: var(--gray-lt);
-  font-style: italic;
-  margin-bottom: 1.2rem;
-}
-.review-author {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-/* ── CTA BAND ─────────────────────────────────────────── */
-#cta {
-  background: var(--orange);
-  padding: 5rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-#cta::before {
-  content: 'DENNY\'S';
-  position: absolute;
-  right: -2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 14rem;
-  color: rgba(0,0,0,0.1);
-  letter-spacing: -0.04em;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-.cta-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-}
-.cta-text {}
-.cta-tag {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 0.6rem;
-}
-.cta-headline {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-.cta-phone {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: rgba(255,255,255,0.85);
-  margin-top: 0.5rem;
-  text-decoration: none;
-  display: block;
-}
-.cta-phone:hover { color: #fff; }
-.cta-btns {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.btn-white {
-  background: #fff;
-  color: var(--orange-dk);
-  padding: 1rem 2.5rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
-  transition: background 0.2s, transform 0.15s;
-  display: inline-block;
-  text-align: center;
-}
-.btn-white:hover { background: #f0f2f5; transform: translateY(-2px); }
-.btn-white-ghost {
-  background: transparent;
-  color: #fff;
-  padding: 1rem 2.5rem;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 2px solid rgba(255,255,255,0.5);
-  display: inline-block;
-  text-align: center;
-  transition: border-color 0.2s;
-}
-.btn-white-ghost:hover { border-color: #fff; }
-
-/* ── FOOTER ───────────────────────────────────────────── */
-footer {
-  background: var(--steel-2);
-  border-top: 1px solid var(--line);
-  padding: 3.5rem 2rem 2rem;
-}
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 3rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--line);
-}
-.footer-brand-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  color: var(--white);
-  letter-spacing: 0.04em;
-  margin-bottom: 0.3rem;
-}
-.footer-brand-name span { color: var(--orange); }
-.footer-brand-sub {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 1rem;
-}
-.footer-bio {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--gray);
-  max-width: 280px;
-}
-.footer-heading {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 1.2rem;
-}
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-.footer-links a {
-  font-size: 0.88rem;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-links a:hover { color: var(--white); }
-.footer-bottom {
-  max-width: 1200px;
-  margin: 1.8rem auto 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.footer-copy {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-.payment-icons { display: flex; gap: 0.5rem; align-items: center; }
-.pay-icon {
-  background: var(--steel-3);
-  border: 1px solid var(--line);
-  padding: 0.3rem 0.6rem;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.06em;
-  color: var(--gray);
-  text-transform: uppercase;
-}
-
-/* ── SCROLL REVEAL ────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal-left.visible { opacity: 1; transform: none; }
-.reveal-right {
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal-right.visible { opacity: 1; transform: none; }
-
-/* ── RESPONSIVE ───────────────────────────────────────── */
-@media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero::after { display: none; }
-  .hero-right { display: none; }
-  .hero-left { padding: 4rem 2rem; min-height: auto; }
-  .about-inner { grid-template-columns: 1fr; }
-  .about-right { display: none; }
-  .faq-inner { grid-template-columns: 1fr; }
-  .location-inner { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-  .section-header { grid-template-columns: 1fr; }
-  .section-num { display: none; }
-  .nav-links { display: none; }
-  .cert-strip { flex-wrap: wrap; }
-  .cta-inner { flex-direction: column; text-align: center; }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links, .nav-phone { display: none; }
+  nav { padding: 0 16px; }
+  .hero { padding: 60px 20px; min-height: auto; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-num { font-size: 36px; }
+  .cert-cell { border-right: none; border-bottom: 1px solid var(--line); }
+  #services, #about, #faq, #location, #reviews { padding: 60px 16px; }
+  .about-grid, .loc-layout { grid-template-columns: 1fr; gap: 40px; }
+  .about-panel { display: none; }
+  .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+  #cta { padding: 56px 16px; }
   #cta::before { display: none; }
+  .cta-inner { flex-direction: column; text-align: center; }
+  .btn-wht, .btn-wht-ghost { width: 100%; }
+  footer { padding: 40px 16px 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 48px; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-ghost { text-align: center; clip-path: none; }
+  .footer-grid { grid-template-columns: 1fr; }
 }
 ```
 
@@ -1142,476 +243,228 @@ footer {
 </head>
 <body>
 
-  <!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">ASE Certified Technicians<span class="ts">·</span>3rd-Generation Family Shop<span class="ts">·</span>Oil Changes · Brakes · Tires<span class="ts">·</span>Electrical Diagnostics<span class="ts">·</span>Key Programming<span class="ts">·</span>St. Paul &amp; Twin Cities<span class="ts">·</span>3,333+ Google Reviews<span class="ts">·</span>ASE Certified Technicians<span class="ts">·</span>3rd-Generation Family Shop<span class="ts">·</span>Oil Changes · Brakes · Tires<span class="ts">·</span>Electrical Diagnostics<span class="ts">·</span>Key Programming<span class="ts">·</span>St. Paul &amp; Twin Cities<span class="ts">·</span>3,333+ Google Reviews<span class="ts">·</span></div>
+</div>
 
-  <div class="ticker">
-    <div class="ticker-inner">
-      ASE Certified Technicians &nbsp;<span>·</span>&nbsp; 3rd-Generation Family Shop &nbsp;<span>·</span>&nbsp; Oil Changes · Brakes · Tires · Steering &amp; Suspension &nbsp;<span>·</span>&nbsp; Electrical Diagnostics &nbsp;<span>·</span>&nbsp; Key Programming &nbsp;<span>·</span>&nbsp; Serving St. Paul &amp; Twin Cities Since Day One &nbsp;<span>·</span>&nbsp; 3,333+ Google Reviews &nbsp;<span>·</span>&nbsp; ASE Certified Technicians &nbsp;<span>·</span>&nbsp; 3rd-Generation Family Shop &nbsp;<span>·</span>&nbsp; Oil Changes · Brakes · Tires · Steering &amp; Suspension &nbsp;<span>·</span>&nbsp; Electrical Diagnostics &nbsp;<span>·</span>&nbsp; Key Programming &nbsp;<span>·</span>&nbsp; Serving St. Paul &amp; Twin Cities Since Day One &nbsp;<span>·</span>&nbsp; 3,333+ Google Reviews &nbsp;<span>·</span>&nbsp;
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-name"><span>Denny's</span> Service Center</div>
+    <div class="nav-logo-sub">Auto Repair · St. Paul, MN</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#location">Hours</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:6516330952" class="nav-phone">(651) 633-0952</a>
+    <a href="tel:6516330952" class="btn-call">Call Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">St. Paul, MN — 2190 Silver Lake Rd NW</div>
+  <h1>Honest<br/><span class="outline">Auto</span><br/><span class="accent">Repair.</span></h1>
+  <p class="hero-sub">3rd-generation family shop. ASE-certified technicians. No upsells, no surprises — just straight answers and quality work you can count on.</p>
+  <div class="hero-btns">
+    <a href="tel:6516330952" class="btn-primary">Call (651) 633-0952</a>
+    <a href="#services" class="btn-ghost">See All Services</a>
+  </div>
+  <div class="hero-badges">
+    <div class="badge-ase">ASE Certified</div>
+    <div class="badge-item"><span class="badge-strong">3rd Generation</span><span class="badge-weak">Family-Owned Shop</span></div>
+    <div class="badge-item"><span class="badge-strong">Worldpac</span><span class="badge-weak">Affiliated</span></div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-cell"><div class="stat-num">3,333<em>+</em></div><div class="stat-lbl">Google Reviews</div></div>
+  <div class="stat-cell"><div class="stat-num">4.7<em>★</em></div><div class="stat-lbl">Average Rating</div></div>
+  <div class="stat-cell"><div class="stat-num">3<em>rd</em></div><div class="stat-lbl">Generation Family Shop</div></div>
+  <div class="stat-cell"><div class="stat-num">8<em> Svcs</em></div><div class="stat-lbl">All Makes &amp; Models</div></div>
+</div>
+
+<div class="cert-strip">
+  <div class="cert-cell"><div class="cert-dot"></div><div class="cert-text"><strong>ASE Certified</strong><span>Trained Technicians</span></div></div>
+  <div class="cert-cell"><div class="cert-dot"></div><div class="cert-text"><strong>Worldpac Affiliated</strong><span>Quality Parts</span></div></div>
+  <div class="cert-cell"><div class="cert-dot"></div><div class="cert-text"><strong>All Makes &amp; Models</strong><span>Domestic &amp; Import</span></div></div>
+  <div class="cert-cell"><div class="cert-dot"></div><div class="cert-text"><strong>Cards Accepted</strong><span>Visa · MC · AMEX · Disc</span></div></div>
+  <div class="cert-cell"><div class="cert-dot"></div><div class="cert-text"><strong>Open Mon–Fri</strong><span>From 7:00 AM Daily</span></div></div>
+</div>
+
+<section id="services">
+  <div class="inner">
+    <div class="services-hdr rev">
+      <div class="section-tag">01 — What We Do</div>
+      <h2 class="section-title">Full-Service<br/>Auto Care</h2>
+      <p class="section-desc">From routine maintenance to advanced diagnostics — every job done with honesty and precision.</p>
+    </div>
+    <div class="services-grid rev">
+      <div class="svc"><span class="svc-icon">🛢️</span><div class="svc-name">Oil Changes</div><div class="svc-desc">Fast, professional oil and filter changes. Conventional or synthetic — we'll recommend what's right for your vehicle.</div><div class="svc-arr">Quick turnaround →</div></div>
+      <div class="svc"><span class="svc-icon">🔧</span><div class="svc-name">Brake Repair</div><div class="svc-desc">Inspection, pad replacement, rotor resurfacing or replacement. We won't replace what doesn't need replacing.</div><div class="svc-arr">Safety first →</div></div>
+      <div class="svc"><span class="svc-icon">🔩</span><div class="svc-name">Steering &amp; Suspension</div><div class="svc-desc">Shocks, struts, tie rods, ball joints — full diagnostics and repair for a smoother, safer ride.</div><div class="svc-arr">Ride quality →</div></div>
+      <div class="svc"><span class="svc-icon">⚡</span><div class="svc-name">Electrical Diagnostics</div><div class="svc-desc">Check engine lights, battery issues, alternator problems — root cause diagnosis without unnecessary guesswork.</div><div class="svc-arr">Accurate diagnosis →</div></div>
+      <div class="svc"><span class="svc-icon">🔑</span><div class="svc-name">Key Programming</div><div class="svc-desc">Smart key, transponder key, and remote fob programming for most makes and models. Skip the dealership markup.</div><div class="svc-arr">All key types →</div></div>
+      <div class="svc"><span class="svc-icon">🖥️</span><div class="svc-name">Computer Programming</div><div class="svc-desc">Module programming, software updates, and vehicle computer reprogramming with professional-grade equipment.</div><div class="svc-arr">Modern vehicles →</div></div>
+      <div class="svc"><span class="svc-icon">🔄</span><div class="svc-name">Tire Sales &amp; Service</div><div class="svc-desc">New tires, rotation, balancing, and flat repairs. We'll help you find the right tire at the right price.</div><div class="svc-arr">All brands →</div></div>
+      <div class="svc"><span class="svc-icon">🛡️</span><div class="svc-name">Preventative Maintenance</div><div class="svc-desc">Fluid flushes, filter replacements, inspections — proactive care that prevents costly breakdowns.</div><div class="svc-arr">Stay ahead →</div></div>
     </div>
   </div>
+</section>
 
-  <!-- NAV -->
-
-  <nav>
-    <a href="#" class="nav-logo">
-      <span class="nav-logo-top"><em>Denny's</em> Service Center</span>
-      <span class="nav-logo-sub">Auto Repair · St. Paul, MN</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#location">Hours</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-    </ul>
-    <div class="nav-phone">
-      <a href="tel:6516330952" class="phone-num">(651) 633-0952</a>
-      <a href="tel:6516330952" class="btn-nav">Call Now</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-tag">St. Paul, MN — 2190 Silver Lake Rd NW</div>
-      <h1>
-        Honest<br/>
-        <span class="outline">Auto</span><br/>
-        <span class="accent">Repair.</span>
-      </h1>
-      <p class="hero-sub">3rd-generation family shop. ASE-certified technicians. No upsells, no surprises — just straight answers and quality work you can count on.</p>
-      <div class="hero-btns">
-        <a href="tel:6516330952" class="btn-primary">Call (651) 633-0952</a>
-        <a href="#services" class="btn-ghost">See All Services</a>
-      </div>
-      <div class="hero-badges">
-        <div class="badge-ase">ASE Certified</div>
-        <div class="badge-gen">
-          <strong>3rd Generation</strong>
-          Family-Owned Shop
-        </div>
-        <div class="badge-gen">
-          <strong>Worldpac</strong>
-          Affiliated
-        </div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="stat-block">
-        <div class="stat-num">3,333<span class="unit">+</span></div>
-        <div class="stat-label">Google Reviews</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">4.7<span class="unit">★</span></div>
-        <div class="stat-label">Average Rating</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">3<span class="unit">rd</span></div>
-        <div class="stat-label">Generation Family Shop</div>
-      </div>
-      <div class="stat-block">
-        <div class="stat-num">7<span class="unit"> Services</span></div>
-        <div class="stat-label">All Makes &amp; Models</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERT STRIP -->
-
-  <div class="cert-strip">
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div class="cert-text"><strong>ASE Certified</strong>Trained Technicians</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div class="cert-text"><strong>Worldpac Affiliated</strong>Quality Parts</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div class="cert-text"><strong>All Makes &amp; Models</strong>Domestic &amp; Import</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div class="cert-text"><strong>Visa · MC · AMEX</strong>All Cards Accepted</div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-dot"></div>
-      <div class="cert-text"><strong>Mon–Fri</strong>Open 7:00 AM Daily</div>
-    </div>
-  </div>
-
-  <!-- SERVICES -->
-
-  <section id="services">
-    <div class="services-inner">
-      <div class="section-header reveal">
-        <div class="section-num">01</div>
-        <div class="section-meta">
-          <div class="section-tag">What We Do</div>
-          <div class="section-title">Full-Service<br/>Auto Care</div>
-          <p class="section-desc">From routine maintenance to advanced diagnostics, we handle it all — with the same honesty and precision every time.</p>
-        </div>
-      </div>
-      <div class="services-grid reveal">
-        <div class="service-card">
-          <span class="service-icon">🛢️</span>
-          <div class="service-name">Oil Changes</div>
-          <div class="service-desc">Fast, professional oil and filter changes to keep your engine protected and running clean. Conventional or synthetic.</div>
-          <div class="service-arrow">Quick turnaround →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🔧</span>
-          <div class="service-name">Brake Repair</div>
-          <div class="service-desc">Inspection, pad replacement, rotor resurfacing or replacement. We won't replace what doesn't need replacing.</div>
-          <div class="service-arrow">Safety first →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🔩</span>
-          <div class="service-name">Steering &amp; Suspension</div>
-          <div class="service-desc">Shocks, struts, tie rods, ball joints — full suspension diagnostics and repair for a smoother, safer ride.</div>
-          <div class="service-arrow">Ride quality →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">⚡</span>
-          <div class="service-name">Electrical Diagnostics</div>
-          <div class="service-desc">Check engine lights, battery issues, alternator problems — we get to the root cause without unnecessary guesswork.</div>
-          <div class="service-arrow">Accurate diagnosis →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🔑</span>
-          <div class="service-name">Key Programming</div>
-          <div class="service-desc">Smart key, transponder key, and remote fob programming for most makes and models. Skip the dealership markup.</div>
-          <div class="service-arrow">All key types →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🖥️</span>
-          <div class="service-name">Computer Programming</div>
-          <div class="service-desc">Module programming, software updates, and vehicle computer reprogramming with professional-grade equipment.</div>
-          <div class="service-arrow">Modern vehicles →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🔄</span>
-          <div class="service-name">Tire Sales &amp; Service</div>
-          <div class="service-desc">New tires, tire rotation, balancing, and flat repairs. We'll help you find the right tire at the right price.</div>
-          <div class="service-arrow">All brands →</div>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🛡️</span>
-          <div class="service-name">Preventative Maintenance</div>
-          <div class="service-desc">Fluid flushes, filter replacements, inspections — proactive care that saves you money and headaches down the road.</div>
-          <div class="service-arrow">Stay ahead →</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-
-  <section id="about">
-    <div class="about-inner">
-      <div class="reveal-left">
+<section id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="rev">
         <div class="section-tag">02 — Our Story</div>
-        <h2 class="section-title" style="margin-top:0.6rem;">Built on<br/><span style="color:var(--orange)">Honesty.</span></h2>
-        <p style="margin-top:1.2rem;">Denny's Service Center is a <strong>3rd-generation, family-owned</strong> automotive repair shop serving St. Paul and the Twin Cities metro. We were built on a simple foundation: treat every customer the way we'd want to be treated.</p>
-        <p>That means <strong>transparent recommendations</strong>, fair pricing, and repairs that actually fix the problem — not just what runs up the bill. Our ASE-certified technicians stay current with modern vehicle technology so your car gets the diagnosis it deserves.</p>
-        <p>Whether you're coming in for an oil change or a complex electrical issue, you'll leave knowing exactly what was done and why. <strong>No pressure. No hidden upsells. Just good work.</strong></p>
+        <h2 class="section-title">Built on<br/><span style="color:var(--orange)">Honesty.</span></h2>
+        <p>Denny's Service Center is a <strong>3rd-generation, family-owned</strong> automotive repair shop serving St. Paul and the Twin Cities metro. Built on a simple foundation: treat every customer the way we'd want to be treated.</p>
+        <p>That means <strong>transparent recommendations</strong>, fair pricing, and repairs that fix the problem — not just what runs up the bill. Our ASE-certified technicians stay current with modern vehicle technology.</p>
+        <p>Whether you're here for an oil change or a complex electrical issue, you'll leave knowing exactly what was done and why. <strong>No pressure. No hidden upsells. Just good work.</strong></p>
         <div class="pillars">
-          <div class="pillar">
-            <div class="pillar-num">01</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Honesty &amp; Integrity</div>
-              <div class="pillar-text">Transparent recommendations, fair pricing, and ethical repairs. No pressure, no unnecessary upsells.</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">02</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Customer-First Service</div>
-              <div class="pillar-text">Your time, your safety, and your vehicle matter. We communicate clearly and treat every car like it's our own.</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-num">03</div>
-            <div class="pillar-body">
-              <div class="pillar-title">Quality &amp; Reliability</div>
-              <div class="pillar-text">Precise workmanship, dependable parts, consistent standards — every vehicle, every time.</div>
-            </div>
-          </div>
+          <div class="pillar"><div class="pillar-num">01</div><div><div class="pillar-title">Honesty &amp; Integrity</div><div class="pillar-text">Transparent recommendations, fair pricing, no unnecessary upsells.</div></div></div>
+          <div class="pillar"><div class="pillar-num">02</div><div><div class="pillar-title">Customer-First Service</div><div class="pillar-text">Your time, your safety, your vehicle. Clear communication every step.</div></div></div>
+          <div class="pillar"><div class="pillar-num">03</div><div><div class="pillar-title">Quality &amp; Reliability</div><div class="pillar-text">Precise workmanship, dependable parts, consistent standards.</div></div></div>
         </div>
       </div>
-      <div class="reveal-right">
+      <div class="rev">
         <div class="about-panel">
-          <div class="gen-badge">3RD</div>
+          <div class="gen-big">3RD</div>
           <div class="gen-label">Generation<br/><span>Family Shop</span></div>
-          <div class="gen-sub">
-            ASE Certified · Worldpac Affiliated<br/>
-            Serving St. Paul, MN<br/>
-            2190 Silver Lake Rd NW, 55112
-          </div>
-          <div class="review-pullout">
-            <div class="review-pullout-text">"They are honest and will not try to up charge you. The quality of work is phenomenal. I will not take my car anywhere else."</div>
-            <div class="review-pullout-author">★★★★★ — Google Review</div>
+          <div class="gen-sub">ASE Certified · Worldpac Affiliated<br/>Serving St. Paul, MN<br/>2190 Silver Lake Rd NW, 55112</div>
+          <div class="rev-pull">
+            <div class="rev-pull-text">"They are honest and will not try to up charge you. The quality of work is phenomenal. I will not take my car anywhere else."</div>
+            <div class="rev-pull-attr">★★★★★ — Google Review</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-
-  <section id="faq">
-    <div class="faq-inner">
-      <div class="reveal-left">
+<section id="faq">
+  <div class="inner">
+    <div class="faq-layout">
+      <div class="rev">
         <div class="section-tag">03 — FAQ</div>
-        <h2 class="section-title" style="margin-top:0.6rem;">Common<br/>Questions</h2>
-        <p class="section-desc" style="margin-top:1rem;">Can't find what you're looking for? Call us directly at <a href="tel:6516330952" style="color:var(--orange);text-decoration:none;">(651) 633-0952</a>.</p>
+        <h2 class="section-title">Common<br/>Questions</h2>
+        <p class="section-desc">Still have questions? Call <a href="tel:6516330952" style="color:var(--orange)">(651) 633-0952</a>.</p>
       </div>
-      <div class="faq-list reveal-right">
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Can I book an appointment online?</span>
-            <em class="faq-chevron">+</em>
-          </button>
-          <div class="faq-a">Contact our shop directly to schedule — we'll make sure you get the right time slot for your vehicle's needs. Calling ahead helps minimize wait times and ensures we have the right parts ready.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Are your technicians ASE certified?</span>
-            <em class="faq-chevron">+</em>
-          </button>
-          <div class="faq-a">Yes. Our technicians hold ASE certifications and participate in ongoing education to stay current with modern vehicle technology — from traditional engines to advanced computer systems.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Is this a good alternative to the dealership?</span>
-            <em class="faq-chevron">+</em>
-          </button>
-          <div class="faq-a">Absolutely. We provide dealership-quality work at more competitive prices, with one major difference: personalized, honest service. No upsell pressure, no unnecessary work — just what your vehicle actually needs.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Can I check on my car while it's in the shop?</span>
-            <em class="faq-chevron">+</em>
-          </button>
-          <div class="faq-a">Absolutely — call us anytime for a status update. Clear communication is one of our core commitments. We'll tell you exactly what we found, what we did, and what (if anything) to watch for.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Do you do key programming and computer work?</span>
-            <em class="faq-chevron">+</em>
-          </button>
-          <div class="faq-a">Yes. We offer automotive key services, transponder programming, remote fob programming, and vehicle computer reprogramming using professional-grade equipment — often at a fraction of dealership cost.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">What payment methods do you accept?</span>
-            <em class="faq-chevron">+</em>
-          </button>
-          <div class="faq-a">We accept Visa, Mastercard, American Express, and Discover — all major credit cards welcome.</div>
-        </div>
+      <div class="faq-list rev">
+        <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span class="faq-qt">Can I book an appointment online?</span><em class="faq-plus">+</em></button><div class="faq-a">Contact our shop directly to schedule. Calling ahead helps minimize wait times and ensures we have the right parts ready for your vehicle.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span class="faq-qt">Are your technicians ASE certified?</span><em class="faq-plus">+</em></button><div class="faq-a">Yes. Our technicians hold ASE certifications and participate in ongoing training to stay current with modern vehicle technology.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span class="faq-qt">Is this a good alternative to the dealership?</span><em class="faq-plus">+</em></button><div class="faq-a">Absolutely. Dealership-quality work at more competitive prices — with honest, personalized service and no upsell pressure.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span class="faq-qt">Can I check on my car while it's in the shop?</span><em class="faq-plus">+</em></button><div class="faq-a">Of course — call us anytime. We'll tell you exactly what we found, what we did, and what to watch for. No surprises.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span class="faq-qt">Do you do key and computer programming?</span><em class="faq-plus">+</em></button><div class="faq-a">Yes. Key programming, transponder and fob services, and vehicle computer reprogramming — often at a fraction of dealership cost.</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="tf(this)"><span class="faq-qt">What payment methods do you accept?</span><em class="faq-plus">+</em></button><div class="faq-a">We accept Visa, Mastercard, American Express, and Discover. All major credit cards welcome.</div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HOURS & LOCATION -->
-
-  <section id="location">
-    <div class="location-inner">
-      <div class="reveal-left">
+<section id="location">
+  <div class="inner">
+    <div class="loc-layout">
+      <div class="rev">
         <div class="section-tag">04 — Find Us</div>
-        <h2 class="section-title" style="margin-top:0.6rem;">Hours &amp;<br/>Location</h2>
-        <div class="hours-grid" style="margin-top:2rem;" id="hours-grid">
-          <div class="hours-day" data-day="Monday">Monday</div><div class="hours-time" data-day="Monday">7:00 AM – 5:00 PM</div>
-          <div class="hours-day" data-day="Tuesday">Tuesday</div><div class="hours-time" data-day="Tuesday">7:00 AM – 5:00 PM</div>
-          <div class="hours-day" data-day="Wednesday">Wednesday</div><div class="hours-time" data-day="Wednesday">7:00 AM – 5:00 PM</div>
-          <div class="hours-day" data-day="Thursday">Thursday</div><div class="hours-time" data-day="Thursday">7:00 AM – 5:00 PM</div>
-          <div class="hours-day" data-day="Friday">Friday</div><div class="hours-time" data-day="Friday">7:00 AM – 10:00 AM</div>
-          <div class="hours-day" data-day="Saturday">Saturday</div><div class="hours-time hours-closed" data-day="Saturday">Closed</div>
-          <div class="hours-day" data-day="Sunday">Sunday</div><div class="hours-time hours-closed" data-day="Sunday">Closed</div>
-        </div>
-        <div class="location-details" style="margin-top:2rem;">
-          <div class="loc-row">
-            <div class="loc-icon">📍</div>
-            <div class="loc-text">
-              <span class="loc-label">Address</span>
-              2190 Silver Lake Rd NW<br/>St. Paul, MN 55112
-            </div>
-          </div>
-          <div class="loc-row">
-            <div class="loc-icon">📞</div>
-            <div class="loc-text">
-              <span class="loc-label">Phone</span>
-              <a href="tel:6516330952">(651) 633-0952</a>
-            </div>
-          </div>
-          <div class="loc-row">
-            <div class="loc-icon">🚗</div>
-            <div class="loc-text">
-              <span class="loc-label">Serving</span>
-              Minneapolis · New Brighton · Roseville · Arden Hills · Maplewood · Little Canada · Shoreview &amp; surrounding areas
-            </div>
-          </div>
+        <h2 class="section-title">Hours &amp;<br/>Location</h2>
+        <table class="hours-tbl" id="htbl">
+          <tr data-day="Monday"><td>Monday</td><td>7:00 AM – 5:00 PM</td></tr>
+          <tr data-day="Tuesday"><td>Tuesday</td><td>7:00 AM – 5:00 PM</td></tr>
+          <tr data-day="Wednesday"><td>Wednesday</td><td>7:00 AM – 5:00 PM</td></tr>
+          <tr data-day="Thursday"><td>Thursday</td><td>7:00 AM – 5:00 PM</td></tr>
+          <tr data-day="Friday"><td>Friday</td><td>7:00 AM – 10:00 AM</td></tr>
+          <tr data-day="Saturday"><td>Saturday</td><td class="h-closed">Closed</td></tr>
+          <tr data-day="Sunday"><td>Sunday</td><td class="h-closed">Closed</td></tr>
+        </table>
+        <div class="loc-rows">
+          <div class="loc-row"><div class="loc-icon">📍</div><div><span class="loc-lbl">Address</span><div class="loc-val">2190 Silver Lake Rd NW, St. Paul, MN 55112</div></div></div>
+          <div class="loc-row"><div class="loc-icon">📞</div><div><span class="loc-lbl">Phone</span><div class="loc-val"><a href="tel:6516330952">(651) 633-0952</a></div></div></div>
+          <div class="loc-row"><div class="loc-icon">🚗</div><div><span class="loc-lbl">Serving</span><div class="loc-val">Minneapolis · New Brighton · Roseville · Arden Hills · Maplewood · Shoreview &amp; surrounding areas</div></div></div>
         </div>
       </div>
-      <div class="reveal-right">
-        <div class="map-frame">
-          <div class="map-frame-icon">🗺️</div>
-          <div class="map-placeholder-txt">
-            2190 Silver Lake Rd NW<br/>
-            St. Paul, MN 55112
-          </div>
-          <a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank" class="map-directions">Get Directions →</a>
+      <div class="rev">
+        <div class="map-box">
+          <div class="map-icon">🗺️</div>
+          <div class="map-addr">2190 Silver Lake Rd NW<br/>St. Paul, MN 55112</div>
+          <a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank" class="map-link">Get Directions →</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- REVIEWS -->
-
-  <section id="reviews">
-    <div class="reviews-inner">
-      <div class="reviews-top reveal">
-        <div>
-          <div class="section-tag">05 — Reviews</div>
-          <h2 class="section-title" style="margin-top:0.6rem;">What Customers Say</h2>
-        </div>
-        <div class="reviews-rating">
-          <div class="rating-big">4.7</div>
-          <div class="rating-detail">
-            <div class="rating-stars">★★★★★</div>
-            <div class="rating-count">3,333+ Google Reviews</div>
-          </div>
-        </div>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card reveal">
-          <div class="review-header">
-            <div class="review-stars">★★★★★</div>
-            <div class="review-badge">Google Review</div>
-          </div>
-          <div class="review-text">"They are honest and will not try to up charge you. The quality of work is phenomenal. I will not take my car anywhere else."</div>
-          <div class="review-author">— Verified Customer</div>
-        </div>
-        <div class="review-card reveal">
-          <div class="review-header">
-            <div class="review-stars">★★★★★</div>
-            <div class="review-badge">Google Review</div>
-          </div>
-          <div class="review-text">"A dealership alternative that actually delivers. Fair prices, honest diagnosis, and they explained everything clearly before doing any work."</div>
-          <div class="review-author">— Verified Customer</div>
-        </div>
-        <div class="review-card reveal">
-          <div class="review-header">
-            <div class="review-stars">★★★★★</div>
-            <div class="review-badge">Google Review</div>
-          </div>
-          <div class="review-text">"Third-generation family shop and it shows. They treat you like a person, not a ticket number. Been coming here for years and will keep coming back."</div>
-          <div class="review-author">— Verified Customer</div>
-        </div>
-      </div>
-      <div style="text-align:center; margin-top:2.5rem;" class="reveal">
-        <a href="https://www.google.com/maps/place/Denny's+Service+Center" target="_blank" class="btn-ghost" style="display:inline-block;">See All 3,333+ Reviews on Google →</a>
-      </div>
+<section id="reviews">
+  <div class="inner">
+    <div class="reviews-top rev">
+      <div><div class="section-tag">05 — Reviews</div><h2 class="section-title">What Customers Say</h2></div>
+      <div class="rating-block"><div class="rating-num">4.7</div><div><div class="rating-stars">★★★★★</div><div class="rating-count">3,333+ Google Reviews</div></div></div>
     </div>
-  </section>
-
-  <!-- CTA BAND -->
-
-  <section id="cta">
-    <div class="cta-inner">
-      <div class="cta-text">
-        <div class="cta-tag">Ready to get started?</div>
-        <div class="cta-headline">Schedule Your<br/>Service Today</div>
-        <a href="tel:6516330952" class="cta-phone">(651) 633-0952</a>
-      </div>
-      <div class="cta-btns">
-        <a href="tel:6516330952" class="btn-white">Call to Book Now</a>
-        <a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank" class="btn-white-ghost">Get Directions</a>
-      </div>
+    <div class="reviews-grid rev">
+      <div class="rev-card"><div class="rev-hdr"><div class="rev-stars">★★★★★</div><div class="rev-badge">Google Review</div></div><div class="rev-text">"They are honest and will not try to up charge you. The quality of work is phenomenal. I will not take my car anywhere else."</div><div class="rev-author">— Verified Customer</div></div>
+      <div class="rev-card"><div class="rev-hdr"><div class="rev-stars">★★★★★</div><div class="rev-badge">Google Review</div></div><div class="rev-text">"A dealership alternative that actually delivers. Fair prices, honest diagnosis, and they explained everything clearly before doing any work."</div><div class="rev-author">— Verified Customer</div></div>
+      <div class="rev-card"><div class="rev-hdr"><div class="rev-stars">★★★★★</div><div class="rev-badge">Google Review</div></div><div class="rev-text">"Third-generation family shop and it shows. They treat you like a person, not a ticket number. Been coming here for years."</div><div class="rev-author">— Verified Customer</div></div>
     </div>
-  </section>
+    <div class="reviews-more rev"><a href="https://www.google.com/maps/place/Denny's+Service+Center" target="_blank" class="btn-ghost" style="display:inline-block">See All 3,333+ Reviews on Google →</a></div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-
-  <footer>
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand-name"><span>Denny's</span> Service Center</div>
-        <div class="footer-brand-sub">Auto Repair · St. Paul, MN 55112</div>
-        <div class="footer-bio">3rd-generation, family-owned automotive repair. Honest work, fair prices, and the kind of service that keeps customers coming back for decades.</div>
-      </div>
-      <div>
-        <div class="footer-heading">Services</div>
-        <ul class="footer-links">
-          <li><a href="#services">Oil Changes</a></li>
-          <li><a href="#services">Brake Repair</a></li>
-          <li><a href="#services">Tire Service</a></li>
-          <li><a href="#services">Electrical Diagnostics</a></li>
-          <li><a href="#services">Key Programming</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Navigate</div>
-        <ul class="footer-links">
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#location">Hours &amp; Location</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Contact</div>
-        <ul class="footer-links">
-          <li><a href="tel:6516330952">(651) 633-0952</a></li>
-          <li><a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank">2190 Silver Lake Rd NW</a></li>
-          <li><a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank">St. Paul, MN 55112</a></li>
-        </ul>
-      </div>
+<section id="cta">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-tag">Ready to get started?</div>
+      <div class="cta-headline">Schedule Your<br/>Service Today</div>
+      <a href="tel:6516330952" class="cta-tel">(651) 633-0952</a>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Denny's Service Center · All Rights Reserved</div>
-      <div class="payment-icons">
-        <div class="pay-icon">VISA</div>
-        <div class="pay-icon">MC</div>
-        <div class="pay-icon">AMEX</div>
-        <div class="pay-icon">DISC</div>
-      </div>
+    <div class="cta-btns">
+      <a href="tel:6516330952" class="btn-wht">Call to Book Now</a>
+      <a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank" class="btn-wht-ghost">Get Directions</a>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    // FAQ accordion
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand-name"><span>Denny's</span> Service Center</div>
+      <div class="f-brand-sub">Auto Repair · St. Paul, MN 55112</div>
+      <div class="f-bio">3rd-generation, family-owned automotive repair. Honest work, fair prices, and service that keeps customers coming back for decades.</div>
+    </div>
+    <div>
+      <div class="f-heading">Services</div>
+      <ul class="f-links"><li><a href="#services">Oil Changes</a></li><li><a href="#services">Brake Repair</a></li><li><a href="#services">Tire Service</a></li><li><a href="#services">Electrical Diagnostics</a></li><li><a href="#services">Key Programming</a></li></ul>
+    </div>
+    <div>
+      <div class="f-heading">Navigate</div>
+      <ul class="f-links"><li><a href="#about">About Us</a></li><li><a href="#faq">FAQ</a></li><li><a href="#location">Hours &amp; Location</a></li><li><a href="#reviews">Reviews</a></li></ul>
+    </div>
+    <div>
+      <div class="f-heading">Contact</div>
+      <ul class="f-links"><li><a href="tel:6516330952">(651) 633-0952</a></li><li><a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank">2190 Silver Lake Rd NW</a></li><li><a href="https://maps.app.goo.gl/o49MdhTJasZGu7pD8" target="_blank">St. Paul, MN 55112</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="f-copy">© 2025 Denny's Service Center · All Rights Reserved</div>
+    <div class="pay-icons"><div class="pay-icon">VISA</div><div class="pay-icon">MC</div><div class="pay-icon">AMEX</div><div class="pay-icon">DISC</div></div>
+  </div>
+</footer>
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stat-block');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => observer.observe(el));
-
-    // Highlight today's hours
-    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const today = days[new Date().getDay()];
-    document.querySelectorAll(`[data-day="${today}"]`).forEach(cell => {
-      cell.parentElement && cell.parentElement.classList.add('hours-today');
-      // Since we use display:contents, target cells directly
-      cell.style.color = 'var(--orange)';
-      cell.style.background = 'rgba(232,98,10,0.08)';
-    });
-  </script>
+<script>
+  function tf(btn) {
+    var item = btn.closest('.faq-item');
+    var open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+    if (!open) item.classList.add('open');
+  }
+  var obs = new IntersectionObserver(function(e) { e.forEach(function(x) { if (x.isIntersecting) { x.target.classList.add('in'); obs.unobserve(x.target); } }); }, { threshold: 0.08 });
+  document.querySelectorAll('.rev').forEach(function(el) { obs.observe(el); });
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var today = days[new Date().getDay()];
+  document.querySelectorAll('#htbl tr').forEach(function(r) { if (r.dataset.day === today) r.classList.add('h-today'); });
+</script>
 
 </body>
 </html>
